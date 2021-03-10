@@ -19,8 +19,60 @@
 </head>
 
 <body>
+    <div id="statediagram_container">
+        <div id="current_state">off</div>
+        <div class="state"></div>
+    </div>
 
-    
+    <table id="statetable">
+        <tr>
+            <td colspan="2" class="centered">Language</td>
+           
+        </tr>
+        <tr id="arow">
+            <td class="centered">a</td>
+            <td>start signal</td>
+        </tr>
+        <tr id="brow">
+            <td class="centered">b</td>
+            <td>brake-held</td>
+        </tr>
+        <tr id="crow">
+            <td class="centered">c</td>
+            <td>seat-belt-engaged</td>
+        </tr>
+        <tr id="drow">
+            <td class="centered">d</td>
+            <td>drive-selected</td>
+        </tr>
+        <tr id="erow">
+            <td class="centered">e</td>
+            <td>park-selected</td>
+        </tr>
+        <tr id="frow">
+            <td class="centered">f</td>
+            <td>accelerate</td>
+        </tr>
+        <tr id="grow">
+            <td class="centered">g</td>
+            <td>reverse-selected</td>
+        </tr>
+        <!--<tr id="hrow">
+            <td class="centered">h</td>
+            <td>brake-pressed</td>
+        </tr>-->
+        <tr id="irow">
+            <td class="centered">i</td>
+            <td>set-cruise-control</td>
+        </tr>
+        <!--<tr id="jrow">
+            <td class="centered">j</td>
+            <td>decelerate</td>
+        </tr>-->
+    </table>
+
+    <input type="text" id="stabput">
+    <button id="test_run" style="position: absolute;bottom: 0;">test run</button>
 
     <script type="text/javascript" src="res/js/index.js"></script>
 </body>

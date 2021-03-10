@@ -15,6 +15,7 @@ font-family: 'Lexend Deca', sans-serif;
     /* Variable for background color */
     --accent-color: hsl(200, 100%, 50%);
     /* Accent color */
+    --offgrey: rgb(205, 205, 205);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -25,6 +26,7 @@ font-family: 'Lexend Deca', sans-serif;
         /* Variable for background color */
         --accent-color: hsl(200, 100%, 50%);
         /* Accent color */
+        --offgrey: rgb(50, 50, 50);
     }
 }
 
@@ -35,27 +37,72 @@ body {
     margin: 0;
 }
 
-body::before {
-    /* Remove upon deployment*/
-    position: absolute;
-    content: "Phone layout";
-    bottom: 0;
-    height: auto;
-    width: auto;
+.centered {
+    text-align: center;
 }
+
+#statediagram_container {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
+    overflow: auto;
+    height: 75%;
+}
+
+#statetable {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    height: fit-content;
+    width: 22rem;
+    border: 0.1rem solid var(--text-color);
+    font-size: 1.3rem;
+    border-collapse: collapse;
+    background-color: var(--background-color);
+}
+
+#statetable td {
+    border: 0.06rem solid var(--text-color);
+    padding: 0.3rem;
+}
+
+#statetable tr {
+    background-color: var(--background-color);
+    transition: background-color 300ms, color 300ms;
+}
+
+#statetable tr:hover {
+    background-color: var(--offgrey);
+}
+
+#statetable tr:active {
+    background-color: var(--accent-color);
+    color: var(--background-color);
+    transition: background-color 0ms, color 0ms;
+}
+
+#stabput {
+    position: fixed;
+    bottom: 5%;
+    height: 5%;
+    width: 70%;
+    left: 5%;
+    background-color: var(--text-color);
+    color: var(--background-color);
+    border: none;
+}
+
+/*  */
 
 /* Tablet / tall aspact ratio */
 @media screen and (min-aspect-ratio: 1/3) and (min-aspect-ratio: 3/4) and (min-width:300px) {
-    body::before {
-        content: "tablet layout";
-    }
+
 
 }
 
 /*    <--  Landscape layout / Standard (with min-width) -->     */
 @media screen and (min-aspect-ratio: 3/2) and (min-width:400px) {
-    body::before {
-        content: "Landscape layout";
-    }
+
 
 }

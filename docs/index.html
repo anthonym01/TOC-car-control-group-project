@@ -21,13 +21,60 @@
 <body>
     <div id="statediagram_container">
         <div id="current_state">off</div>
-        <div class="state"></div>
+        <div class="state active" id="offstate">
+            <div class="stateid">0</div>
+            <div class="label_mount">
+                <div class="state_label">Off</div>
+            </div>
+        </div>
+        <div class="state" id="ignitionstate">
+            <div class="stateid">2</div>
+            <div class="label_mount">
+                <div class="state_label">ignition-on</div>
+            </div>
+        </div>
+        <div class="state" id="holdstate">
+            <div class="stateid">1</div>
+            <div class="label_mount">
+                <div class="state_label">hold</div>
+            </div>
+        </div>
+        <div class="state" id="enginestartedstate">
+            <div class="stateid">3</div>
+            <div class="label_mount">
+                <div class="state_label">engine-started</div>
+            </div>
+        </div>
+        <div class="state" id="stationarystate">
+            <div class="stateid">4</div>
+            <div class="label_mount">
+                <div class="state_label">Stationary</div>
+            </div>
+        </div>
+        
+        <div class="state" id="reversestate">
+            <div class="stateid">5</div>
+            <div class="label_mount">
+                <div class="state_label">in-reverse-motion</div>
+            </div>
+        </div>
+        <div class="state" id="forwardstate">
+            <div class="stateid">6</div>
+            <div class="label_mount">
+                <div class="state_label">in-forward-motion</div>
+            </div>
+        </div>
+        <div class="state" id="cruisecontrolstate">
+            <div class="stateid">7</div>
+            <div class="label_mount">
+                <div class="state_label">cruise-control-engaged</div>
+            </div>
+        </div>
     </div>
 
     <table id="statetable">
         <tr>
             <td colspan="2" class="centered">Language</td>
-           
         </tr>
         <tr id="arow">
             <td class="centered">a</td>

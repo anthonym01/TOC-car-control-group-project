@@ -35,6 +35,7 @@ body {
     color: var(--text-color);
     background-color: var(--background-color);
     margin: 0;
+    font-family: 'Lexend Deca', sans-serif;
 }
 
 .centered {
@@ -82,6 +83,11 @@ body {
     transition: background-color 0ms, color 0ms;
 }
 
+.flasrow{
+    background-color: var(--accent-color)!important;
+    color: var(--background-color);
+}
+
 #stabput {
     position: fixed;
     bottom: 5%;
@@ -93,16 +99,118 @@ body {
     border: none;
 }
 
-/*  */
+/* state */
+.state {
+    position: relative;
+    border: 0.2rem solid var(--text-color);
+    height: 4rem;
+    width: 4rem;
+    padding: 0.5rem;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 100%;
+    font-size: 2rem;
+    border-radius: 50%;
+    text-align: center;
+    left: 5rem;
+    box-sizing: border-box;
+    user-select: none;
+}
+
+.active {
+    background-color: var(--accent-color);
+}
+
+.fault {
+    background-color: red;
+}
+
+.label_mount {
+    position: absolute;
+    top: 4rem;
+    left: 1.8rem;
+    width: 0.4rem;
+    height: 2rem;
+    /*background-color: red;*/
+    display: block;
+    align-items: center;
+    justify-self: center;
+    overflow: visible;
+}
+
+.state_label {
+    position: relative;
+    display: block;
+    width: 14rem;
+    transform: translateX(-7rem);
+    height: auto;
+    overflow: visible;
+    text-align: center;
+    white-space: nowrap;
+    font-size: 1.3rem;
+}
+
+.stateid {
+    position: relative;
+    padding-top: 0.3rem;
+    height: 100%;
+    width: 100%;
+    font-size: inherit;
+    box-sizing: border-box;
+    line-height: 100%;
+}
+
+/* state positions */
+#offstate {
+    position: absolute;
+    top: 3rem;
+    left: 7rem;
+}
+
+#ignitionstate {
+    position: absolute;
+    top: 18rem;
+    left: 7rem;
+}
+
+#holdstate {
+    position: absolute;
+    top: 18rem;
+    left: 24rem;
+}
+
+#enginestartedstate {
+    position: absolute;
+    top: 3rem;
+    left: 24rem;
+}
+
+#stationarystate {
+    position: absolute;
+    top: 3rem;
+    left: 41rem;
+}
+
+#reversestate {
+    position: absolute;
+    top: 18rem;
+    left: 41rem;
+}
+
+#forwardstate {
+    position: absolute;
+    top: 3rem;
+    left: 58rem;
+}
+
+#cruisecontrolstate {
+    position: absolute;
+    top: 3rem;
+    left: 75rem;
+}
 
 /* Tablet / tall aspact ratio */
-@media screen and (min-aspect-ratio: 1/3) and (min-aspect-ratio: 3/4) and (min-width:300px) {
-
-
-}
+@media screen and (min-aspect-ratio: 1/3) and (min-aspect-ratio: 3/4) and (min-width:300px) {}
 
 /*    <--  Landscape layout / Standard (with min-width) -->     */
-@media screen and (min-aspect-ratio: 3/2) and (min-width:400px) {
-
-
-}
+@media screen and (min-aspect-ratio: 3/2) and (min-width:400px) {}

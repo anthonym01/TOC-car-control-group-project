@@ -284,6 +284,7 @@ body {
     background-repeat: no-repeat;
     background-image: var(--hook_arrow);
     overflow: visible;
+    background-repeat: no-repeat;
 }
 
 .hook_arrow_right {
@@ -295,19 +296,20 @@ body {
     position: absolute;
     top: 0;
     left: 0;
-    height: 100%;
+    height: 150%;
     width: 100%;
-    background-size: cover;
+    background-size: contain;
     background-origin: border-box;
     background-position: center;
     transform: rotate(90deg);
     background-image: var(--hook_arrow);
+    background-repeat: no-repeat;
     overflow: visible;
 }
 
 .hook_arrow_down {
 
-    transform: rotate(270deg) scaleX(-1) scaleY(-1);
+    transform: rotate(90deg) scaleX(-1) scaleY(-1);
 }
 
 
@@ -356,6 +358,26 @@ body {
 #cruisecontrol-inforward_arrow_container {
     top: 5.5rem;
     left: 61.7rem;
+}
+
+#ignitionon-off_arrow_container {
+    top: 15.8rem;
+    left: 4.4rem;
+} 
+
+#off-ignitionon_arrow_container {
+    top: 16.6rem;
+    left: 1rem;
+}
+
+#inreverse-stationary_arrow_container {
+    top: 15.8rem;
+    left: 35rem;
+}
+
+#stationary-inreverse_arrow_container {
+    top: 15.4rem;
+    left: 38rem;
 }
 
 /* Tablet / tall aspact ratio */

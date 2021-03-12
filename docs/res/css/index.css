@@ -27,6 +27,8 @@ font-family: 'Lexend Deca', sans-serif;
         --accent-color: hsl(200, 100%, 50%);
         /* Accent color */
         --offgrey: rgb(50, 50, 50);
+        --straight_arrow: url('../img/straight_arrow-light.webp');
+        --hook_arrow: url('../img/hook_arrow-light.webp')
     }
 }
 
@@ -50,7 +52,7 @@ body {
     overflow: auto;
     height: 75%;
     background-size: contain;
-    background-image: url('../img/Screenshot_20210310_173417.png');
+    /*background-image: url('../img/Screenshot_20210310_173417.png');*/
     filter: drop-shadow(5px);
 }
 
@@ -86,8 +88,8 @@ body {
     transition: background-color 0ms, color 0ms;
 }
 
-.flasrow{
-    background-color: var(--accent-color)!important;
+.flasrow {
+    background-color: var(--accent-color) !important;
     color: var(--background-color);
 }
 
@@ -166,50 +168,194 @@ body {
 /* state positions */
 #offstate {
     position: absolute;
-    top: 3rem;
+    top: 7rem;
     left: 7rem;
 }
 
 #ignitionstate {
     position: absolute;
-    top: 18rem;
+    top: 25rem;
     left: 7rem;
 }
 
 #holdstate {
     position: absolute;
-    top: 18rem;
+    top: 25rem;
     left: 24rem;
 }
 
 #enginestartedstate {
     position: absolute;
-    top: 3rem;
+    top: 7rem;
     left: 24rem;
 }
 
 #stationarystate {
     position: absolute;
-    top: 3rem;
+    top: 7rem;
     left: 41rem;
 }
 
 #reversestate {
     position: absolute;
-    top: 18rem;
+    top: 25rem;
     left: 41rem;
 }
 
 #forwardstate {
     position: absolute;
-    top: 3rem;
+    top: 7rem;
     left: 58rem;
 }
 
 #cruisecontrolstate {
     position: absolute;
-    top: 3rem;
+    top: 7rem;
     left: 75rem;
+}
+
+/* Arrows */
+.arrowcontainer {
+    /*background-color: red;*/
+    position: absolute;
+    top: 7rem;
+    height: 4rem;
+    width: 13rem;
+    left: 11rem;
+    overflow: visible;
+}
+
+.straight_arrow_left,
+.straight_arrow_right {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-size: cover;
+    background-origin: border-box;
+    background-position: center;
+    background-image: var(--straight_arrow);
+    overflow: visible;
+}
+
+.straight_arrow_right {
+    transform: scaleX(-1);
+}
+
+.straight_arrow_up {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-size: cover;
+    background-origin: border-box;
+    background-position: center;
+    transform: rotate(90deg);
+    background-image: var(--straight_arrow);
+    overflow: visible;
+}
+
+.straight_arrow_45deg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 130%;
+    width: 130%;
+    background-size: cover;
+    background-origin: border-box;
+    background-position: center;
+    transform: rotate(225deg);
+    background-image: var(--straight_arrow);
+    overflow: visible;
+}
+
+.hook_arrow_left,
+.hook_arrow_right {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 150%;
+    width: 100%;
+    background-size: contain;
+    background-origin: border-box;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: var(--hook_arrow);
+    overflow: visible;
+}
+
+.hook_arrow_right {
+    transform: scaleX(-1) scaleY(-1);
+}
+
+.hook_arrow_up,
+.hook_arrow_down {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-size: cover;
+    background-origin: border-box;
+    background-position: center;
+    transform: rotate(90deg);
+    background-image: var(--hook_arrow);
+    overflow: visible;
+}
+
+.hook_arrow_down {
+
+    transform: rotate(270deg) scaleX(-1) scaleY(-1);
+}
+
+
+/* arrow positions */
+#ignition-on-hold_arrow_container {
+    top: 25rem;
+}
+
+#hold-enginestarted_arrow_container {
+    left: 19.4rem;
+    top: 16.8rem;
+}
+
+#off-hold_arrow_container {
+    top: 15.5rem;
+    left: 10rem;
+
+}
+
+#stationary-engine_stated_arrow_container {
+    top: 5.5rem;
+    left: 27.5rem;
+}
+
+#engine_stated-stationary_arrow_container {
+    top: 7.7rem;
+    left: 28.4rem;
+    /*transform: rotate(180deg);*/
+}
+
+#stationary-inforward_arrow_container {
+    top: 7.7rem;
+    left: 45.5rem;
+}
+
+#inforward-stationary_arrow_container {
+    top: 5.5rem;
+    left: 44.5rem;
+}
+
+#inforward-cruisecontrol_arrow_container {
+    top: 7.7rem;
+    left: 62.6rem;
+}
+
+#cruisecontrol-inforward_arrow_container {
+    top: 5.5rem;
+    left: 61.7rem;
 }
 
 /* Tablet / tall aspact ratio */

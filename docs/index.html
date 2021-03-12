@@ -21,6 +21,7 @@
 <body>
     <div id="statediagram_container">
         <div id="current_state">off</div>
+
         <div class="state active" id="offstate">
             <div class="stateid">0</div>
             <div class="label_mount">
@@ -51,7 +52,7 @@
                 <div class="state_label">Stationary</div>
             </div>
         </div>
-        
+
         <div class="state" id="reversestate">
             <div class="stateid">5</div>
             <div class="label_mount">
@@ -69,6 +70,48 @@
             <div class="label_mount">
                 <div class="state_label">cruise-control-engaged</div>
             </div>
+        </div>
+
+        <!-- Arrows -->
+        <!-- enginestarted -> off arrow" -->
+        <div class="arrowcontainer" id="enginestarted-off_arrow_container">
+            <div class="straight_arrow_left" id="enginestarted-off_arrow"></div>
+        </div>
+        <!-- ignition-on -> hold arrow" -->
+        <div class="arrowcontainer" id="ignition-on-hold_arrow_container">
+            <div class="straight_arrow_right" id="ignition-on-hold_arrow"></div>
+        </div>
+        <!-- hold -> engine started arrow" -->
+        <div class="arrowcontainer" id="hold-enginestarted_arrow_container">
+            <div class="straight_arrow_up" id="hold-enginestarted_arrow"></div>
+        </div>
+        <!-- off -> hold arrow" -->
+        <div class="arrowcontainer" id="off-hold_arrow_container">
+            <div class="straight_arrow_45deg" id="hold-enginestarted_arrow"></div>
+        </div>
+        <!-- stationary -> engine_stated arrow" -->
+        <div class="arrowcontainer" id="stationary-engine_stated_arrow_container">e
+            <div class="hook_arrow_left" id="stationary-engine_stated_arrow"></div>
+        </div>
+        <!-- stationary -> engine_stated arrow" -->
+        <div class="arrowcontainer" id="engine_stated-stationary_arrow_container">c
+            <div class="hook_arrow_right" id="engine_stated-stationary_arrow"></div>
+        </div>
+        <!-- stationary -> engine_stated arrow" -->
+        <div class="arrowcontainer" id="stationary-inforward_arrow_container">d
+            <div class="hook_arrow_right" id="stationary-inforward_arrow_arrow"></div>
+        </div>
+        <!-- stationary -> engine_stated arrow" -->
+        <div class="arrowcontainer" id="inforward-stationary_arrow_container">b if s=0
+            <div class="hook_arrow_left" id="inforward-stationary_arrow"></div>
+        </div>
+        <!-- stationary -> engine_stated arrow" -->
+        <div class="arrowcontainer" id="inforward-cruisecontrol_arrow_container">i
+            <div class="hook_arrow_right" id="inforward-cruisecontrol_arrow"></div>
+        </div>
+        <!-- stationary -> engine_stated arrow" -->
+        <div class="arrowcontainer" id="cruisecontrol-inforward_arrow_container">b
+            <div class="hook_arrow_left" id="cruisecontrol-inforward_arrow"></div>
         </div>
     </div>
 

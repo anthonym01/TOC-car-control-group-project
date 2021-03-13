@@ -154,7 +154,7 @@ body {
     white-space: nowrap;
     font-size: 1.3rem;
 }
-
+.hangslow{top: 6rem;}
 .stateid {
     position: relative;
     padding-top: 0.3rem;

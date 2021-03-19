@@ -1,5 +1,5 @@
 const stabput = document.getElementById('stabput')
-const stateout = document.getElementById('current_state')
+//const stateout = document.getElementById('current_state')
 
 window.addEventListener('load', function () {
     /*console.log('⣿⣿⣻⣽⡿⣿⣎⠙⣿⣞⣷⡌⢻⣟⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣿⣿⣿⣿⣿⣿⡄⠹⣿⣿⡆⠻⣿⣟⣯⡿⣽⡿⣿⣿⣿⣿⣽⡷⣯⣿⣿⣿⣿⣿⣿⣿⣿');
@@ -42,7 +42,7 @@ document.getElementById('drow').addEventListener('click', function () { stabput.
 document.getElementById('erow').addEventListener('click', function () { stabput.value = stabput.value + 'e,' })
 document.getElementById('frow').addEventListener('click', function () { stabput.value = stabput.value + 'f,' })
 document.getElementById('grow').addEventListener('click', function () { stabput.value = stabput.value + 'g,' })
-//document.getElementById('hrow').addEventListener('click', function () { stabput.value = stabput.value + 'h,' })
+document.getElementById('hrow').addEventListener('click', function () { stabput.value = stabput.value + 'h,' })
 document.getElementById('irow').addEventListener('click', function () { stabput.value = stabput.value + 'i,' })
 //document.getElementById('jrow').addEventListener('click', function () { stabput.value = stabput.value + 'j,' })
 
@@ -52,8 +52,8 @@ let delay = 1000;//in miliseconds
 
 let states = [
     "Error",//0
-    "Off",//1
-    "ignition-on",//2
+    "Off/ignition-on",//1
+    "fault 2",//2
     "Hold",//3
     "engine-started",//4
     "stationary position",//5
@@ -64,14 +64,20 @@ let states = [
 
 let current_state = 1;
 let speed = 0; /* IMPLIMENT SPEED */
+let timers = [];//clear after
 
 document.getElementById('test_run').addEventListener('click', pullupinput)
 
 function pullupinput() {
     rest_states();
     current_state = 1;
+    timers = [];
     speed = 0;
     inptarray = [];
+    document.getElementById('statout').innerHTML = states[1];
+    document.getElementById('speedout').innerHTML = 0;
+    document.getElementById('signalout').innerHTML = "-";
+    document.getElementById('presout').innerHTML = 'Start';
     raw_input = stabput.value.toLowerCase();
     console.log('Raw input: ', raw_input)
 
@@ -86,13 +92,13 @@ function pullupinput() {
 function process_input() {
 
     for (let i in inptarray) {
-        setTimeout(() => {
-            console.log('current state: ', states[current_state], ' Input/signal: ', inptarray[i])
+        timers[i] = setTimeout(() => {
             rest_states();
+            console.log('current state: ', states[current_state], ' Input/signal: ', inptarray[i])
             switch (inptarray[i]) {
                 case ""://empty string
-                    console.warn(states[current_state], ' no action can be taken with signal ""')
-                    failiure(current_state, "")
+                    console.log('ignored empty string')
+
                     //return -1;
                     break;
 
@@ -101,23 +107,21 @@ function process_input() {
 
                     switch (current_state) {
                         case 1://Off -> ignition-on
-                            current_state = 2;
-                            document.getElementById('ignitionstate').classList.add('active');
-                            console.log('Off -> ignition-on');
-                            break;
-                        case 2://ignition-on -> Off
                             current_state = 1;
                             document.getElementById('offstate').classList.add('active');
-                            console.log('ignition-on -> Off');
+                            document.getElementById('off-ignitionon_arrow_container').classList = "arrowcontainer_active"
+                            console.log('Off -> ignition-on');
                             break;
                         case 3: //Hold -> engine-started
                             current_state = 4;
                             document.getElementById('enginestartedstate').classList.add('active');
+                            document.getElementById('hold-enginestarted_arrow_container').classList = "arrowcontainer_active"
                             console.log('Hold -> engine-started');
                             break;
                         case 4: //engine-started -> Off
                             current_state = 1;
                             document.getElementById('offstate').classList.add('active');
+                            document.getElementById('enginestarted-off_arrow_container').classList = "arrowcontainer_active"
                             console.log('engine-started -> Off');
                             break;
                         default:
@@ -134,20 +138,18 @@ function process_input() {
                             current_state = 3;
                             console.log('Off -> hold');
                             document.getElementById('holdstate').classList.add('active');
+                            document.getElementById('off-hold_arrow_container').classList = "arrowcontainer_active"
                             break;//Off -> hold
-                        case 2:
-                            current_state = 3;
-                            console.log('ignition-on -> hold');
-                            document.getElementById('holdstate').classList.add('active');
-                            break;//ignition-on -> hold
                         case 6: //in-reverse-motion -> stationary position if speed = 0 | speed--
                             /* IMPLIMENT SPEED */
                             if (speed > 1) {
                                 speed--;
+                                document.getElementById('reverse-reverse_arrow_container').classList = "arrowcontainer_active";
                                 console.log('in-reverse-motion slow to speed: ', speed)
                             } else {
                                 current_state = 5;
                                 document.getElementById('stationarystate').classList.add('active');
+                                document.getElementById('stationary-inreverse_arrow_container').classList = "arrowcontainer_active"
                                 console.log('in-reverse-motion -> stationary position')
                             }
                             break;
@@ -159,14 +161,11 @@ function process_input() {
                             } else {
                                 current_state = 5;
                                 document.getElementById('stationarystate').classList.add('active');
+                                document.getElementById('inforward-stationary_arrow_container').classList = "arrowcontainer_active"
                                 console.log('in-forward-motion -> stationary position')
                             }
                             break;
-                        case 8://cruise-control-engaged -> in-forward-motion
-                            current_state = 7;
-                            document.getElementById('forwardstate').classList.add('active');
-                            console.log('cruise-control-engaged -> in-forward-motion')
-                            break;
+
                         default:
                             console.warn(states[current_state], ' no action can be taken with signal "b"')
                             failiure(current_state, "b")
@@ -179,6 +178,7 @@ function process_input() {
                     if (current_state == 4) {
                         current_state = 5;
                         document.getElementById('stationarystate').classList.add('active');
+                        document.getElementById('engine_stated-stationary_arrow_container').classList = "arrowcontainer_active"
                         console.log('cengine-started -> stationary position')
                     } else {
                         console.warn(states[current_state], ' no action can be taken with signal "c"');
@@ -190,8 +190,9 @@ function process_input() {
                 case "d"://drive-selected
                     document.getElementById('drow').classList = "flasrow"
                     if (current_state == 5) {
-                        current_state = 7;
+                        current_state = 7; speed = 1;
                         document.getElementById('forwardstate').classList.add('active');
+                        document.getElementById('stationary-inforward_arrow_container').classList = "arrowcontainer_active"
                         console.log('stationary position  -> in-forward-motion')
                     } else {
                         console.warn(states[current_state], ' no action can be taken with signal "d"');
@@ -205,10 +206,11 @@ function process_input() {
                     if (current_state == 5) {
                         current_state = 4;
                         document.getElementById('enginestartedstate').classList.add('active');
-                        console.log('stationary position  -> engine-started')
+                        document.getElementById('stationary-engine_stated_arrow_container').classList = "arrowcontainer_active";
+                        console.log('stationary position  -> engine-started');
                     } else {
                         console.warn(states[current_state], ' no action can be taken with signal "e"');
-                        failiure(current_state, "e")
+                        failiure(current_state, "e");
                         return -1;
                     }
                     break;
@@ -218,23 +220,27 @@ function process_input() {
                     switch (current_state) {
                         case 5:// stationary position accelerate
                             document.getElementById('stationarystate').classList.add('active');
+                            document.getElementById('stationary-stationary_arrow_container').classList = "arrowcontainer_active"
                             console.log('stationary position accelerate');
                             break;
                         case 6: //in-reverse-motion accelerate
                             /* IMPLIMENT SPEED */
                             speed++;
                             document.getElementById('reversestate').classList.add('active');
+                            document.getElementById('reverse-reverse_arrow_container').classList = "arrowcontainer_active";
                             console.log('in-reverse-motion accelerate to speed: ', speed);
                             break;
                         case 7: //in-forward-motion accelerate
                             /* IMPLIMENT SPEED */
                             speed++;
                             document.getElementById('forwardstate').classList.add('active');
+                            document.getElementById('forward-forward_arrow_container').classList = "arrowcontainer_active"
                             console.log('in-forward-motion accelerate to speed: ', speed);
                             break;
                         case 8://cruise-control-engaged accelerate
                             console.log('cruise-control-engaged accelerate');
                             document.getElementById('cruisecontrolstate').classList.add('active');
+                            document.getElementById('cruise-cruise_arrow_container').classList = "arrowcontainer_active"
                             break;
                         default:
                             console.warn(states[current_state], ' no action can be taken with signal "f"')
@@ -247,11 +253,30 @@ function process_input() {
                     document.getElementById('grow').classList = "flasrow"
                     if (current_state == 5) {
                         current_state = 6;
+                        speed = 1;
                         document.getElementById('reversestate').classList.add('active');
+                        document.getElementById('inreverse-stationary_arrow_container').classList = "arrowcontainer_active"
                         console.log('stationary position  -> in-reverse-motion')
                     } else {
                         console.warn(states[current_state], ' no action can be taken with signal "g"');
                         failiure(current_state, "g")
+                        return -1;
+                    }
+                    break;
+
+                case "h":
+                    document.getElementById('hrow').classList = "flasrow"
+
+                    if (current_state == 8) {//cruise-control-engaged -> in-forward-motion
+                        current_state = 7;
+                        document.getElementById('forwardstate').classList.add('active');
+
+                        document.getElementById('cruisecontrol-inforward_arrow_container').classList = "arrowcontainer_active";
+                        window.location = '#forwardstate';
+                        console.log('cruise-control-engaged -> in-forward-motion')
+                    } else {
+                        console.warn(states[current_state], ' no action can be taken with signal "h"');
+                        failiure(current_state, "h")
                         return -1;
                     }
                     break;
@@ -261,7 +286,8 @@ function process_input() {
                     if (current_state == 7) {
                         current_state = 8;
                         document.getElementById('cruisecontrolstate').classList.add('active');
-                        window.location = '#cruisecontrolstate'
+                        document.getElementById('inforward-cruisecontrol_arrow_container').classList = "arrowcontainer_active";
+                        window.location = '#cruisecontrolstate';
                         console.log('in-forward-motion  -> cruise-control-engaged')
                     } else {
                         console.warn(states[current_state], ' no action can be taken with signal "g"');
@@ -272,31 +298,61 @@ function process_input() {
 
                 default:
                     console.warn(' Input/signal: ', inptarray[i], ' is not appart of the language')
+                    document.getElementById('statout').innerHTML = states[current_state];
+                    document.getElementById('speedout').innerHTML = speed;
+                    document.getElementById('signalout').innerHTML = inptarray[i];
                     failiure(current_state, inptarray[i])
+                    document.getElementById('presout').innerHTML = 'Rejected '+inptarray[i]+ ' is not appart of the language';
                     return -1;
             }
-            stateout.innerText = states[current_state] + ' ' + speed;
-        }, delay * i);
-        stateout.innerText = states[current_state] + ' ' + speed;
+
+            document.getElementById('statout').innerHTML = states[current_state];
+            document.getElementById('speedout').innerHTML = speed;
+            document.getElementById('signalout').innerHTML = inptarray[i];
+            document.getElementById('presout').innerHTML = 'working';
+            stabput.focus()
+            stabput.setSelectionRange(i * 2, 2 * i + 1)
+
+            if (i >= inptarray.length - 1) {
+                document.getElementById('statout').innerHTML = states[current_state];
+                document.getElementById('speedout').innerHTML = speed;
+                document.getElementById('presout').innerHTML = 'Finished';
+
+                if (current_state == 1 || current_state == 8) {
+                    document.getElementById('presout').innerHTML = 'Accepted';
+                } else {
+                    failiure(current_state, "end")
+                    document.getElementById('presout').innerHTML = 'Rejected';
+                }
+            }
+
+        }, delay * i + 1000);
+
     }
 }
 
 function rest_states() {
     document.querySelectorAll('.state').forEach((states) => { states.classList = "state" })
-    document.getElementById('arow').classList = ""
-    document.getElementById('brow').classList = ""
-    document.getElementById('crow').classList = ""
-    document.getElementById('drow').classList = ""
-    document.getElementById('erow').classList = ""
-    document.getElementById('frow').classList = ""
-    document.getElementById('grow').classList = ""
-    document.getElementById('irow').classList = ""
+    document.getElementById('arow').classList = "";
+    document.getElementById('brow').classList = "";
+    document.getElementById('crow').classList = "";
+    document.getElementById('drow').classList = "";
+    document.getElementById('erow').classList = "";
+    document.getElementById('frow').classList = "";
+    document.getElementById('grow').classList = "";
+    document.getElementById('hrow').classList = "";
+    document.getElementById('irow').classList = "";
+    document.querySelectorAll('.arrowcontainer_active').forEach((arrowcontainer) => {
+        arrowcontainer.classList = "arrowcontainer"
+    })
 
 }
 
 function failiure(where, signal) {
     console.warn('Failiure cannot apply ', signal, ' to state ', states[where])
+    timers.forEach((timer) => { clearTimeout(timer) })
     rest_states()
+    //document.getElementById('presout').innerHTML = 'Rejected';
     switch (where) {
         case 0:
             console.warn('Explicit error, something went very wrong');
@@ -304,9 +360,9 @@ function failiure(where, signal) {
         case 1:
             document.getElementById('offstate').classList.add('fault');
             break;
-        case 2:
+        /*case 2:
             document.getElementById('ignitionstate').classList.add('fault');
-            break;
+            break;*/
         case 3:
             document.getElementById('holdstate').classList.add('fault');
 

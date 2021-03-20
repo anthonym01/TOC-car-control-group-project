@@ -35,15 +35,79 @@ window.addEventListener('load', function () {
 
 });
 
-document.getElementById('arow').addEventListener('click', function () { stabput.value = stabput.value + 'a,' })
-document.getElementById('brow').addEventListener('click', function () { stabput.value = stabput.value + 'b,' })
-document.getElementById('crow').addEventListener('click', function () { stabput.value = stabput.value + 'c,' })
-document.getElementById('drow').addEventListener('click', function () { stabput.value = stabput.value + 'd,' })
-document.getElementById('erow').addEventListener('click', function () { stabput.value = stabput.value + 'e,' })
-document.getElementById('frow').addEventListener('click', function () { stabput.value = stabput.value + 'f,' })
-document.getElementById('grow').addEventListener('click', function () { stabput.value = stabput.value + 'g,' })
-document.getElementById('hrow').addEventListener('click', function () { stabput.value = stabput.value + 'h,' })
-document.getElementById('irow').addEventListener('click', function () { stabput.value = stabput.value + 'i,' })
+document.getElementById('arow').addEventListener('click', function () {
+    if (stabput.value.length < 1) {
+        stabput.value = stabput.value + 'a'
+    } else {
+        stabput.value = stabput.value + ',a'
+    }
+    stabput.focus()
+})
+document.getElementById('brow').addEventListener('click', function () {
+    if (stabput.value.length < 1) {
+        stabput.value = stabput.value + 'b'
+    } else {
+        stabput.value = stabput.value + ',b'
+    }
+    stabput.focus()
+})
+document.getElementById('crow').addEventListener('click', function () {
+    if (stabput.value.length < 1) {
+        stabput.value = stabput.value + 'c'
+    } else {
+        stabput.value = stabput.value + ',c'
+    }
+    stabput.focus()
+})
+document.getElementById('drow').addEventListener('click', function () {
+    if (stabput.value.length < 1) {
+        stabput.value = stabput.value + 'd'
+    } else {
+        stabput.value = stabput.value + ',d'
+    }
+    stabput.focus()
+})
+document.getElementById('erow').addEventListener('click', function () {
+    if (stabput.value.length < 1) {
+        stabput.value = stabput.value + 'e'
+    } else {
+        stabput.value = stabput.value + ',e'
+    }
+    stabput.focus()
+})
+document.getElementById('frow').addEventListener('click', function () {
+    if (stabput.value.length < 1) {
+        stabput.value = stabput.value + 'f'
+    } else {
+        stabput.value = stabput.value + ',f'
+    }
+    stabput.focus()
+})
+document.getElementById('grow').addEventListener('click', function () {
+    if (stabput.value.length < 1) {
+        stabput.value = stabput.value + 'g'
+    } else {
+        stabput.value = stabput.value + ',g'
+    }
+    stabput.focus()
+})
+document.getElementById('hrow').addEventListener('click', function () {
+    if (stabput.value.length < 1) {
+        stabput.value = stabput.value + 'h'
+    } else {
+        stabput.value = stabput.value + ',h'
+    }
+    stabput.focus()
+
+})
+document.getElementById('irow').addEventListener('click', function () {
+    if (stabput.value.length < 1) {
+        stabput.value = stabput.value + 'i'
+    } else {
+        stabput.value = stabput.value + ',i'
+    }
+    stabput.focus()
+})
 //document.getElementById('jrow').addEventListener('click', function () { stabput.value = stabput.value + 'j,' })
 
 let inptarray = [];
@@ -96,12 +160,6 @@ function process_input() {
             rest_states();
             console.log('current state: ', states[current_state], ' Input/signal: ', inptarray[i])
             switch (inptarray[i]) {
-                case ""://empty string
-                    console.log('ignored empty string')
-
-                    //return -1;
-                    break;
-
                 case "a"://start signal
                     document.getElementById('arow').classList = "flasrow"
 
@@ -148,6 +206,7 @@ function process_input() {
                                 console.log('in-reverse-motion slow to speed: ', speed)
                             } else {
                                 current_state = 5;
+                                speed = 0;
                                 document.getElementById('stationarystate').classList.add('active');
                                 document.getElementById('stationary-inreverse_arrow_container').classList = "arrowcontainer_active"
                                 console.log('in-reverse-motion -> stationary position')
@@ -160,6 +219,7 @@ function process_input() {
                                 console.log('in-forward-motion slow to speed: ', speed)
                             } else {
                                 current_state = 5;
+                                speed = 0;
                                 document.getElementById('stationarystate').classList.add('active');
                                 document.getElementById('inforward-stationary_arrow_container').classList = "arrowcontainer_active"
                                 console.log('in-forward-motion -> stationary position')
@@ -302,7 +362,7 @@ function process_input() {
                     document.getElementById('speedout').innerHTML = speed;
                     document.getElementById('signalout').innerHTML = inptarray[i];
                     failiure(current_state, inptarray[i])
-                    document.getElementById('presout').innerHTML = 'Rejected '+inptarray[i]+ ' is not appart of the language';
+                    document.getElementById('presout').innerHTML = 'Rejected ' + inptarray[i] + ' is not appart of the language';
                     return -1;
             }
 

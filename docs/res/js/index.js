@@ -35,63 +35,94 @@ window.addEventListener('load', function () {
 
 });
 
-document.getElementById('arow').addEventListener('click', function () {
+document.getElementById('enginestarted-off_arrow').addEventListener('click', a_add)
+document.getElementById('cruisecontrol-inforward_arrow').addEventListener('click', a_add)
+document.getElementById('ignitionon-off_arrow').addEventListener('click', a_add)
+document.getElementById('hold-enginestarted_arrow').addEventListener('click', a_add)
+document.getElementById('arow').addEventListener('click', a_add)
+function a_add() {
     if (stabput.value.length < 1) {
         stabput.value = stabput.value + 'a'
     } else {
         stabput.value = stabput.value + ',a'
     }
     stabput.focus()
-})
-document.getElementById('brow').addEventListener('click', function () {
+}
+
+document.getElementById('brow').addEventListener('click', b_add)
+document.getElementById('ignition-on-hold_arrow').addEventListener('click', b_add)
+document.getElementById('hold-enginestarted_arrow').addEventListener('click', b_add)
+document.getElementById('stationary-inreverse_arrow').addEventListener('click', b_add)
+function b_add() {
     if (stabput.value.length < 1) {
         stabput.value = stabput.value + 'b'
     } else {
         stabput.value = stabput.value + ',b'
     }
     stabput.focus()
-})
-document.getElementById('crow').addEventListener('click', function () {
+}
+
+document.getElementById('crow').addEventListener('click', c_add)
+document.getElementById('engine_stated-stationary_arrow').addEventListener('click', c_add)
+function c_add() {
     if (stabput.value.length < 1) {
         stabput.value = stabput.value + 'c'
     } else {
         stabput.value = stabput.value + ',c'
     }
     stabput.focus()
-})
-document.getElementById('drow').addEventListener('click', function () {
+}
+
+document.getElementById('drow').addEventListener('click', d_add)
+document.getElementById('stationary-inforward_arrow_arrow').addEventListener('click', d_add)
+function d_add() {
     if (stabput.value.length < 1) {
         stabput.value = stabput.value + 'd'
     } else {
         stabput.value = stabput.value + ',d'
     }
     stabput.focus()
-})
-document.getElementById('erow').addEventListener('click', function () {
+}
+
+document.getElementById('erow').addEventListener('click', e_add)
+document.getElementById('stationary-engine_stated_arrow').addEventListener('click', e_add)
+function e_add() {
     if (stabput.value.length < 1) {
         stabput.value = stabput.value + 'e'
     } else {
         stabput.value = stabput.value + ',e'
     }
     stabput.focus()
-})
-document.getElementById('frow').addEventListener('click', function () {
+}
+
+document.getElementById('frow').addEventListener('click', f_add)
+document.getElementById('stationary-stationary_arrow').addEventListener('click', f_add)
+//document.getElementById('forward-forward_arrow').addEventListener('click', f_add)
+document.getElementById('cruise-cruise_arrow').addEventListener('click', f_add)
+//document.getElementById('reverse-reverse_arrow').addEventListener('click', f_add)
+function f_add() {
     if (stabput.value.length < 1) {
         stabput.value = stabput.value + 'f'
     } else {
         stabput.value = stabput.value + ',f'
     }
     stabput.focus()
-})
-document.getElementById('grow').addEventListener('click', function () {
+}
+
+document.getElementById('grow').addEventListener('click', g_add)
+document.getElementById('inreverse-stationary_arrow').addEventListener('click', g_add)
+function g_add() {
     if (stabput.value.length < 1) {
         stabput.value = stabput.value + 'g'
     } else {
         stabput.value = stabput.value + ',g'
     }
     stabput.focus()
-})
-document.getElementById('hrow').addEventListener('click', function () {
+}
+
+document.getElementById('hrow').addEventListener('click', h_add)
+document.getElementById('cruisecontrol-inforward_arrow').addEventListener('click', h_add)
+function h_add() {
     if (stabput.value.length < 1) {
         stabput.value = stabput.value + 'h'
     } else {
@@ -99,15 +130,19 @@ document.getElementById('hrow').addEventListener('click', function () {
     }
     stabput.focus()
 
-})
-document.getElementById('irow').addEventListener('click', function () {
+}
+
+document.getElementById('irow').addEventListener('click', i_add)
+document.getElementById('cruisecontrol-inforward_arrow').addEventListener('click', i_add)
+function i_add() {
     if (stabput.value.length < 1) {
         stabput.value = stabput.value + 'i'
     } else {
         stabput.value = stabput.value + ',i'
     }
     stabput.focus()
-})
+}
+
 //document.getElementById('jrow').addEventListener('click', function () { stabput.value = stabput.value + 'j,' })
 
 let inptarray = [];
@@ -116,8 +151,8 @@ let delay = 1000;//in miliseconds
 
 let states = [
     "Error",//0
-    "Off/ignition-on",//1
-    "fault 2",//2
+    "Off",//1
+    "ignition-on",//2
     "Hold",//3
     "engine-started",//4
     "stationary position",//5
@@ -158,6 +193,7 @@ function process_input() {
     for (let i in inptarray) {
         timers[i] = setTimeout(() => {
             rest_states();
+
             console.log('current state: ', states[current_state], ' Input/signal: ', inptarray[i])
             switch (inptarray[i]) {
                 case "a"://start signal
@@ -165,10 +201,16 @@ function process_input() {
 
                     switch (current_state) {
                         case 1://Off -> ignition-on
-                            current_state = 1;
-                            document.getElementById('offstate').classList.add('active');
+                            current_state = 2;
+                            document.getElementById('ignitionstate').classList.add('active');
                             document.getElementById('off-ignitionon_arrow_container').classList = "arrowcontainer_active"
                             console.log('Off -> ignition-on');
+                            break;
+                        case 2://ignition-on -> Off
+                            current_state = 1;
+                            document.getElementById('offstate').classList.add('active');
+                            document.getElementById('ignitionon-off_arrow_container').classList = "arrowcontainer_active"
+                            console.log('ignition-on -> Off');
                             break;
                         case 3: //Hold -> engine-started
                             current_state = 4;
@@ -197,35 +239,31 @@ function process_input() {
                             console.log('Off -> hold');
                             document.getElementById('holdstate').classList.add('active');
                             document.getElementById('off-hold_arrow_container').classList = "arrowcontainer_active"
-                            break;//Off -> hold
+                            break;//Off -> holda
+                        case 2://ignition-on -> hold_arrow
+                            current_state = 3;
+                            console.log('ignition-on -> hold');
+                            document.getElementById('holdstate').classList.add('active');
+                            document.getElementById('ignition-on-hold_arrow_container').classList = "arrowcontainer_active"
+                            break;
                         case 6: //in-reverse-motion -> stationary position if speed = 0 | speed--
-                            /* IMPLIMENT SPEED */
-                            if (speed > 1) {
-                                speed--;
-                                document.getElementById('reverse-reverse_arrow_container').classList = "arrowcontainer_active";
-                                console.log('in-reverse-motion slow to speed: ', speed)
-                            } else {
-                                current_state = 5;
-                                speed = 0;
-                                document.getElementById('stationarystate').classList.add('active');
-                                document.getElementById('stationary-inreverse_arrow_container').classList = "arrowcontainer_active"
-                                console.log('in-reverse-motion -> stationary position')
-                            }
-                            break;
-                        case 7: //in-forward-motion -> stationary position if speed = 0 | speed--
-                            /* IMPLIMENT SPEED */
-                            if (speed > 1) {
-                                speed--;
-                                console.log('in-forward-motion slow to speed: ', speed)
-                            } else {
-                                current_state = 5;
-                                speed = 0;
-                                document.getElementById('stationarystate').classList.add('active');
-                                document.getElementById('inforward-stationary_arrow_container').classList = "arrowcontainer_active"
-                                console.log('in-forward-motion -> stationary position')
-                            }
-                            break;
 
+                            current_state = 5;
+                            speed = 0;
+                            document.getElementById('stationarystate').classList.add('active');
+                            document.getElementById('stationary-inreverse_arrow_container').classList = "arrowcontainer_active"
+                            console.log('in-reverse-motion -> stationary position');
+                            break;
+                        /*case 7: //in-forward-motion -> stationary position if speed = 0 | speed--
+
+
+                            current_state = 5;
+                            speed = 0;
+                            document.getElementById('stationarystate').classList.add('active');
+                            document.getElementById('inforward-stationary_arrow_container').classList = "arrowcontainer_active"
+                            console.log('in-forward-motion -> stationary position')
+                            break;
+*/
                         default:
                             console.warn(states[current_state], ' no action can be taken with signal "b"')
                             failiure(current_state, "b")
@@ -324,23 +362,45 @@ function process_input() {
                     }
                     break;
 
-                case "h":
+                case "h"://brake pressed
                     document.getElementById('hrow').classList = "flasrow"
+                    switch (current_state) {
+                        case 6:
+                            /* IMPLIMENT SPEED */
 
-                    if (current_state == 8) {//cruise-control-engaged -> in-forward-motion
-                        current_state = 7;
-                        document.getElementById('forwardstate').classList.add('active');
+                            speed--;
+                            document.getElementById('reverse-reverse_arrow_container').classList = "arrowcontainer_active";
+                            console.log('in-reverse-motion slow to speed: ', speed)
+                            if (speed < 1) {
+                                current_state = 5;
+                                document.getElementById('stationarystate').classList.add('active');
+                            }
 
-                        document.getElementById('cruisecontrol-inforward_arrow_container').classList = "arrowcontainer_active";
-                        window.location = '#forwardstate';
-                        console.log('cruise-control-engaged -> in-forward-motion')
-                    } else {
-                        console.warn(states[current_state], ' no action can be taken with signal "h"');
-                        failiure(current_state, "h")
-                        return -1;
+                            break;
+                        case 7:
+                            /* IMPLIMENT SPEED */
+
+                            speed--;
+                            console.log('in-forward-motion slow to speed: ', speed)
+                            if (speed < 1) {
+                                current_state = 5;
+                                document.getElementById('stationarystate').classList.add('active');
+                            }
+
+                            break;
+                        case 8:
+                            current_state = 7;
+                            document.getElementById('forwardstate').classList.add('active');
+                            document.getElementById('cruisecontrol-inforward_arrow_container').classList = "arrowcontainer_active";
+                            window.location = '#forwardstate';
+                            console.log('cruise-control-engaged -> in-forward-motion')
+                            break;
+                        default:
+                            console.warn(states[current_state], ' no action can be taken with signal "h"');
+                            failiure(current_state, "h")
+                            return -1;
                     }
                     break;
-
                 case "i"://set-cruise-control
                     document.getElementById('irow').classList = "flasrow"
                     if (current_state == 7) {
@@ -420,9 +480,9 @@ function failiure(where, signal) {
         case 1:
             document.getElementById('offstate').classList.add('fault');
             break;
-        /*case 2:
+        case 2:
             document.getElementById('ignitionstate').classList.add('fault');
-            break;*/
+            break;
         case 3:
             document.getElementById('holdstate').classList.add('fault');
 

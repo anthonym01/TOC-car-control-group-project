@@ -133,7 +133,16 @@ body {
     font-size: 2rem;
     border: none;
 }
-
+#stabput_clear{
+    position: absolute;
+    right: 0;
+    /*bottom:0;*/
+    height: 2rem;
+    width: 2rem;
+    background-image: url('../img/os-x-pngrepo-com.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+}
 /* state */
 .state {
     position: relative;
@@ -274,6 +283,7 @@ body {
 
 .arrowcontainer_active {
     z-index: 1000;
+    color: var(--accent-color);
 }
 
 .arrowcontainer .straight_arrow_left,
@@ -509,8 +519,8 @@ body {
 }
 
 #off-ignitionon_arrow_container {
-    top: 3.2rem;
-    left: 2.77rem;
+    top: 16.2rem;
+    left: 1.77rem;
 }
 
 #inreverse-stationary_arrow_container {

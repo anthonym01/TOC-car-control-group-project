@@ -364,6 +364,7 @@ function process_input() {//process that input
 
                             speed--;
                             document.getElementById('reverse-reverse_arrow_container').classList = "arrowcontainer_active";
+                            document.getElementById('reversestate').classList.add('active');
                             console.log('in-reverse-motion slow to speed: ', speed)
                             if (speed < 1) {
                                 current_state = 5;
@@ -377,6 +378,7 @@ function process_input() {//process that input
 
                             speed--;
                             document.getElementById('forward-forward_arrow_container').classList = "arrowcontainer_active";
+                            document.getElementById('forwardstate').classList.add('active');
                             console.log('in-forward-motion slow to speed: ', speed)
                             if (speed < 1) {
                                 current_state = 5;

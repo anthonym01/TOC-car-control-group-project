@@ -1,45 +1,12 @@
 const stabput = document.getElementById('stabput')
 //const stateout = document.getElementById('current_state')
 
-window.addEventListener('load', function () {
-    /*console.log('⣿⣿⣻⣽⡿⣿⣎⠙⣿⣞⣷⡌⢻⣟⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣿⣿⣿⣿⣿⣿⡄⠹⣿⣿⡆⠻⣿⣟⣯⡿⣽⡿⣿⣿⣿⣿⣽⡷⣯⣿⣿⣿⣿⣿⣿⣿⣿');
-    console.log('⣿⣿⣿⣿⣻⣽⡿⣿⣎⠙⣿⣞⣷⡌⢻⣟⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣿⣿⣿⣿⣿⣿⡄⠹⣿⣿⡆⠻⣿⣟⣯⡿⣽⡿⣿⣿⣿⣿⣽⡷⣯⣿⣿⣿⣿⣿⣿⣿');
-    console.log('⣿⣿⣿⣿⣟⣷⣿⣿⣿⡀⠹⣟⣾⣟⣆⠹⣯⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇⢠⡘⣿⣿⡄⠉⢿⣿⣽⡷⣿⣻⣿⣿⣿⣿⡝⣷⣯⢿⣿⣿⣿⣿⣿');
-    console.log('⣿⣿⣿⣿⣯⢿⣾⢿⣿⡄⢄⠘⢿⣞⡿⣧⡈⢷⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇⢸⣧⠘⣿⣷⠈⣦⠙⢿⣽⣷⣻⣽⣿⣿⣿⣿⣌⢿⣯⢿⣿⣿⣿⣿');
-    console.log('⣿⣿⣿⣿⣟⣯⣿⢿⣿⡆⢸⡷⡈⢻⡽⣷⡷⡄⠻⣽⣿⣿⡿⣿⣿⣿⣿⣿⣿⣷⣿⣿⣿⣿⣏⢰⣯⢷⠈⣿⡆⢹⢷⡌⠻⡾⢋⣱⣯⣿⣿⣿⣿⡆⢻⡿⣿⣿⣿⣿');
-    console.log('⣿⣿⣿⣿⡎⣿⢾⡿⣿⡆⢸⣽⢻⣄⠹⣷⣟⣿⣄⠹⣟⣿⣿⣟⣿⣿⣿⣿⣿⣿⣽⣿⣿⣿⡇⢸⣯⣟⣧⠘⣷⠈⡯⠛⢀⡐⢾⣟⣷⣻⣿⣿⣿⡿⡌⢿⣻⣿⣿⣿');
-    console.log('⣿⣿⣿⣿⣧⢸⡿⣟⣿⡇⢸⣯⣟⣮⢧⡈⢿⣞⡿⣦⠘⠏⣹⣿⣽⢿⣿⣿⣿⣿⣯⣿⣿⣿⡇⢸⣿⣿⣾⡆⠹⢀⣠⣾⣟⣷⡈⢿⣞⣯⢿⣿⣿⣿⢷⠘⣯⣿⣿⣿');
-    console.log('⣿⣿⣿⣿⣿⡈⣿⢿⣽⡇⠘⠛⠛⠛⠓⠓⠈⠛⠛⠟⠇⢀⢿⣻⣿⣯⢿⣿⣿⣿⣷⢿⣿⣿⠁⣾⣿⣿⣿⣧⡄⠇⣹⣿⣾⣯⣿⡄⠻⣽⣯⢿⣻⣿⣿⡇⢹⣿⣿⣿');
-    console.log('⣿⣿⣿⣿⣿⡇⢹⣿⡽⡇⢸⣿⣿⣿⣿⣿⣞⣆⠰⣶⣶⡄⢀⢻⡿⣯⣿⡽⣿⣿⣿⢯⣟⡿⢀⣿⣿⣿⣿⣿⣧⠐⣸⣿⣿⣷⣿⣿⣆⠹⣯⣿⣻⣿⣿⣿⢀⣿⣿⣿');
-    console.log('⣿⣿⣿⣿⣿⣿⠘⣯⡿⡇⢸⣿⣿⣿⣿⣿⣿⣿⣧⡈⢿⣳⠘⡄⠻⣿⢾⣽⣟⡿⣿⢯⣿⡇⢸⣿⣿⣿⣿⣿⣿⡀⢾⣿⣿⣿⣿⣿⣿⣆⠹⣾⣷⣻⣿⡿⡇⣿⣿⣿');
-    console.log('⣿⣿⣿⣿⣿⣿⡇⢹⣿⠇⢸⣿⣿⣿⣿⣿⣿⣿⣿⣷⣄⠻⡇⢹⣆⠹⣟⣾⣽⣻⣟⣿⣽⠁⣾⣿⣿⣿⣿⣿⣿⣇⣿⣿⠿⠛⠛⠉⠙⠋⢀⠁⢘⣯⣿⣿⣧⣿⣿⣿');
-    console.log('⣿⣿⣿⣿⣿⣿⣿⡈⣿⡃⢼⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣦⡙⠌⣿⣆⠘⣿⣞⡿⣞⡿⡞⢠⣿⣿⣿⣿⣿⡿⠛⠉⠁⢀⣀⣠⣤⣤⣶⣶⣶⡆⢻⣽⣞⡿⣷⣿⣿⣿');
-    console.log('⣿⣿⣿⣿⣿⣿⡿⠃⠘⠁⠉⠉⠉⠉⠉⠉⠉⠉⠉⠙⠛⠛⢿⣄⢻⣿⣧⠘⢯⣟⡿⣽⠁⣾⣿⣿⣿⣿⣿⡃⢀⢀⠘⠛⠿⢿⣻⣟⣯⣽⣻⣵⡀⢿⣯⣟⣿⣿⣿⣿');
-    console.log('⣿⣿⣿⣿⣿⣿⣶⣶⡆⢀⣿⣾⣿⣾⣷⣿⣶⠿⠚⠉⢀⢀⣤⣿⣷⣿⣿⣷⡈⢿⣻⢃⣼⣿⣿⣿⣿⣻⣿⣿⣿⡶⣦⣤⣄⣀⡀⠉⠛⠛⠷⣯⣳⠈⣾⡽⣾⣿⣿⣿');
-    console.log('⣿⣿⣻⣿⣿⣿⣿⣿⡿⠐⣿⣿⣿⣿⠿⠋⠁⢀⢀⣤⣾⣿⣿⣿⣿⣿⣿⣿⣿⣌⣥⣾⡿⣿⣿⣷⣿⣿⢿⣷⣿⣿⣟⣾⣽⣳⢯⣟⣶⣦⣤⡾⣟⣦⠘⣿⢾⣿⣿⣿');
-    console.log('⣿⣿⡷⣿⣿⣿⣿⣿⡗⣦⠸⡿⠋⠁⢀⢀⣠⣴⢿⣿⣽⣻⢽⣾⣟⣷⣿⣟⣿⣿⣿⣳⠿⣵⣧⣼⣿⣿⣿⣿⣿⣾⣿⣿⣿⣿⣿⣽⣳⣯⣿⣿⣿⣽⢀⢷⣻⣿⣿⣿');
-    console.log('⣿⣿⣿⣷⣻⣿⣿⣿⡷⠛⣁⢀⣀⣤⣶⣿⣛⡿⣿⣮⣽⡻⣿⣮⣽⣻⢯⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣯⢀⢸⣿⣿⣿⣿');
-    console.log('⣿⣿⣿⣷⢿⣽⣿⣿⣷⣿⣷⣆⠹⣿⣶⣯⠿⣿⣶⣟⣻⢿⣷⣽⣻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⢀⣯⣟⣿⣿⣿');
-    console.log('⣿⣿⣻⣿⣿⢾⡽⣿⣿⣿⣿⣿⣆⢹⣶⣿⣻⣷⣯⣟⣿⣿⣽⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⢀⡿⡇⣿⣿⣿');
-    console.log('⣿⣿⡻⣽⣿⣯⢿⣽⣻⣿⣿⣿⣿⣆⢻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠛⢻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠇⢸⣿⠇⣿⣿⣿');
-    console.log('⣿⣿⣿⣦⠛⣿⢯⣷⢿⡽⣿⣿⣿⣿⣆⠻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠃⠎⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠏⢀⣿⣾⣣⣿⣿⣿');
-    console.log('⣿⣿⠙⣿⣿⣌⠻⣽⢯⣿⣽⣻⣿⣿⣿⣧⠩⢻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡏⢰⢣⠘⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠃⢀⢀⢿⣞⣷⣿⣿⣿');
-    console.log('⣿⣿⣧⠘⣿⣿⡷⣌⠙⢷⣯⡷⣟⣿⣿⣿⣷⡀⡹⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣈⠃⣸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠟⢀⣴⡧⢀⠸⣿⡽⣿⣿⣿');
-    console.log('⣿⣿⢻⣷⡈⢿⣿⣿⢧⢀⠙⢿⣻⡾⣽⣻⣿⣿⣄⠌⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠛⢁⣰⣾⣟⡿⢀⡄⢿⣟⣿⣿⣿');
-    console.log('⣿⣿⢀⠹⣟⣆⠻⣿⣿⣆⢀⣀⠉⠻⣿⡽⣯⣿⣿⣷⣈⢻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠋⢀⣠⠘⣯⣷⣿⡟⢀⢆⠸⣿⣿⣿⣿');
-    console.log('⣿⣿⣇⢱⡘⢿⣷⣬⣙⠿⣧⠘⣆⢀⠈⠻⣷⣟⣾⢿⣿⣆⠹⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠋⣠⡞⢡⣿⢀⣿⣿⣿⠇⡄⢸⡄⢻⣿⣿⣿');
-    console.log('⣿⣿⣿⡆⢣⡀⠙⢾⣟⣿⣿⣷⡈⠂⠘⣦⡈⠿⣯⣿⢾⣿⣆⠙⠻⠿⠿⠿⠿⡿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠿⠛⢋⣠⣾⡟⢠⣿⣿⢀⣿⣿⡟⢠⣿⢈⣧⠘⣿⣿⣿');
-    console.log('⣿⣿⠻⣿⡄⢳⡄⢆⡙⠾⣽⣿⣿⣆⡀⢹⡷⣄⠙⢿⣿⡾⣿⣆⢀⡀⢀⢀⢀⢀⢀⢀⢀⢀⢀⢀⢀⢀⣀⣠⣴⡿⣯⠏⣠⣿⣿⡏⢸⣿⡿⢁⣿⣿⢀⣿⠆⣿⣿⣿');
-    console.log('⣿⣿⣦⡙⣿⣆⢻⡌⢿⣶⢤⣉⣙⣿⣷⡀⠙⠽⠷⠄⠹⣿⣟⣿⣆⢙⣋⣤⣤⣤⣄⣀⢀⢀⢀⢀⣾⣿⣟⡷⣯⡿⢃⣼⣿⣿⣿⠇⣼⡟⣡⣿⣿⣿⢀⡿⢠⣿⣿⣿');
-    console.log('⣿⣿⣿⣷⣮⣿⣿⣿⡌⠁⢤⣤⣤⣤⣬⣭⣴⣶⣶⣶⣆⠈⢻⣿⣿⣆⢻⣿⣿⣿⣿⣿⣿⣷⣶⣤⣌⣉⡘⠛⠻⠶⣿⣿⣿⣿⡟⣰⣫⣴⣿⣿⣿⣿⠄⣷⣿⣿⣿⣿');*/
-
-});
-
 document.getElementById('enginestarted-off_arrow').addEventListener('click', a_add)
 document.getElementById('cruisecontrol-inforward_arrow').addEventListener('click', a_add)
 document.getElementById('ignitionon-off_arrow').addEventListener('click', a_add)
 document.getElementById('hold-enginestarted_arrow').addEventListener('click', a_add)
 document.getElementById('arow').addEventListener('click', a_add)
+
 function a_add() {
     if (stabput.value.length < 1) {
         stabput.value = stabput.value + 'a'
@@ -53,6 +20,7 @@ document.getElementById('brow').addEventListener('click', b_add)
 document.getElementById('ignition-on-hold_arrow').addEventListener('click', b_add)
 document.getElementById('hold-enginestarted_arrow').addEventListener('click', b_add)
 document.getElementById('stationary-inreverse_arrow').addEventListener('click', b_add)
+
 function b_add() {
     if (stabput.value.length < 1) {
         stabput.value = stabput.value + 'b'
@@ -145,6 +113,8 @@ function i_add() {
 
 //document.getElementById('jrow').addEventListener('click', function () { stabput.value = stabput.value + 'j,' })
 
+//DFA simulation
+
 let inptarray = [];
 
 let delay = 1000;//in miliseconds
@@ -167,7 +137,7 @@ let timers = [];//clear after
 
 document.getElementById('test_run').addEventListener('click', pullupinput)
 
-function pullupinput() {
+function pullupinput() {//draw input and run
     rest_states();
     current_state = 1;
     timers = [];
@@ -188,7 +158,7 @@ function pullupinput() {
     setTimeout(() => { process_input(); }, 1000);
 }
 
-function process_input() {
+function process_input() {//process that input
 
     for (let i in inptarray) {
         timers[i] = setTimeout(() => {
@@ -203,23 +173,27 @@ function process_input() {
                         case 1://Off -> ignition-on
                             current_state = 2;
                             document.getElementById('ignitionstate').classList.add('active');
+                            window.location = "#ignitionstate";
                             document.getElementById('off-ignitionon_arrow_container').classList = "arrowcontainer_active"
                             console.log('Off -> ignition-on');
                             break;
                         case 2://ignition-on -> Off
                             current_state = 1;
                             document.getElementById('offstate').classList.add('active');
+                            window.location = "#offstate";
                             document.getElementById('ignitionon-off_arrow_container').classList = "arrowcontainer_active"
                             console.log('ignition-on -> Off');
                             break;
                         case 3: //Hold -> engine-started
                             current_state = 4;
+                            window.location = "#enginestartedstate";
                             document.getElementById('enginestartedstate').classList.add('active');
                             document.getElementById('hold-enginestarted_arrow_container').classList = "arrowcontainer_active"
                             console.log('Hold -> engine-started');
                             break;
                         case 4: //engine-started -> Off
                             current_state = 1;
+                            window.location = "#offstate";
                             document.getElementById('offstate').classList.add('active');
                             document.getElementById('enginestarted-off_arrow_container').classList = "arrowcontainer_active"
                             console.log('engine-started -> Off');
@@ -238,12 +212,14 @@ function process_input() {
                             current_state = 3;
                             console.log('Off -> hold');
                             document.getElementById('holdstate').classList.add('active');
+                            window.location = "#holdstate";
                             document.getElementById('off-hold_arrow_container').classList = "arrowcontainer_active"
                             break;//Off -> holda
                         case 2://ignition-on -> hold_arrow
                             current_state = 3;
                             console.log('ignition-on -> hold');
                             document.getElementById('holdstate').classList.add('active');
+                            window.location = "#holdstate";
                             document.getElementById('ignition-on-hold_arrow_container').classList = "arrowcontainer_active"
                             break;
                         case 6: //in-reverse-motion -> stationary position if speed = 0 | speed--
@@ -251,6 +227,7 @@ function process_input() {
                             current_state = 5;
                             speed = 0;
                             document.getElementById('stationarystate').classList.add('active');
+                            window.location = "#stationarystate";
                             document.getElementById('stationary-inreverse_arrow_container').classList = "arrowcontainer_active"
                             console.log('in-reverse-motion -> stationary position');
                             break;
@@ -276,6 +253,7 @@ function process_input() {
                     if (current_state == 4) {
                         current_state = 5;
                         document.getElementById('stationarystate').classList.add('active');
+                        window.location = "#stationarystate";
                         document.getElementById('engine_stated-stationary_arrow_container').classList = "arrowcontainer_active"
                         console.log('cengine-started -> stationary position')
                     } else {
@@ -288,8 +266,10 @@ function process_input() {
                 case "d"://drive-selected
                     document.getElementById('drow').classList = "flasrow"
                     if (current_state == 5) {
-                        current_state = 7; speed = 1;
+                        current_state = 7;
+                        speed = 1;
                         document.getElementById('forwardstate').classList.add('active');
+                        window.location = "#forwardstate";
                         document.getElementById('stationary-inforward_arrow_container').classList = "arrowcontainer_active"
                         console.log('stationary position  -> in-forward-motion')
                     } else {
@@ -304,6 +284,7 @@ function process_input() {
                     if (current_state == 5) {
                         current_state = 4;
                         document.getElementById('enginestartedstate').classList.add('active');
+                        window.location = "#enginestartedstate";
                         document.getElementById('stationary-engine_stated_arrow_container').classList = "arrowcontainer_active";
                         console.log('stationary position  -> engine-started');
                     } else {
@@ -318,6 +299,7 @@ function process_input() {
                     switch (current_state) {
                         case 5:// stationary position accelerate
                             document.getElementById('stationarystate').classList.add('active');
+                            window.location = "#stationarystate";
                             document.getElementById('stationary-stationary_arrow_container').classList = "arrowcontainer_active"
                             console.log('stationary position accelerate');
                             break;
@@ -325,6 +307,7 @@ function process_input() {
                             /* IMPLIMENT SPEED */
                             speed++;
                             document.getElementById('reversestate').classList.add('active');
+                            window.location = "#reversestate";
                             document.getElementById('reverse-reverse_arrow_container').classList = "arrowcontainer_active";
                             console.log('in-reverse-motion accelerate to speed: ', speed);
                             break;
@@ -332,11 +315,13 @@ function process_input() {
                             /* IMPLIMENT SPEED */
                             speed++;
                             document.getElementById('forwardstate').classList.add('active');
+                            window.location = "#forwardstate";
                             document.getElementById('forward-forward_arrow_container').classList = "arrowcontainer_active"
                             console.log('in-forward-motion accelerate to speed: ', speed);
                             break;
                         case 8://cruise-control-engaged accelerate
                             console.log('cruise-control-engaged accelerate');
+                            window.location = "#cruisecontrolstate";
                             document.getElementById('cruisecontrolstate').classList.add('active');
                             document.getElementById('cruise-cruise_arrow_container').classList = "arrowcontainer_active"
                             break;
@@ -353,6 +338,7 @@ function process_input() {
                         current_state = 6;
                         speed = 1;
                         document.getElementById('reversestate').classList.add('active');
+                        window.location = "#reversestate";
                         document.getElementById('inreverse-stationary_arrow_container').classList = "arrowcontainer_active"
                         console.log('stationary position  -> in-reverse-motion')
                     } else {
@@ -374,6 +360,7 @@ function process_input() {
                             if (speed < 1) {
                                 current_state = 5;
                                 document.getElementById('stationarystate').classList.add('active');
+                                window.location = "#stationarystate";
                             }
 
                             break;
@@ -381,10 +368,12 @@ function process_input() {
                             /* IMPLIMENT SPEED */
 
                             speed--;
+                            document.getElementById('forward-forward_arrow_container').classList = "arrowcontainer_active";
                             console.log('in-forward-motion slow to speed: ', speed)
                             if (speed < 1) {
                                 current_state = 5;
                                 document.getElementById('stationarystate').classList.add('active');
+                                window.location = "#stationarystate";
                             }
 
                             break;
@@ -440,6 +429,13 @@ function process_input() {
 
                 if (current_state == 1 || current_state == 8) {
                     document.getElementById('presout').innerHTML = 'Accepted';
+                    setTimeout(() => {
+                        if (current_state == 1) {
+                            document.getElementById('offstate').classList.add("accept")
+                        } else {
+                            document.getElementById('cruisecontrolstate').classList.add("accept")
+                        }
+                    }, 500);
                 } else {
                     failiure(current_state, "end")
                     document.getElementById('presout').innerHTML = 'Rejected';
@@ -451,7 +447,7 @@ function process_input() {
     }
 }
 
-function rest_states() {
+function rest_states() {//reste the states
     document.querySelectorAll('.state').forEach((states) => { states.classList = "state" })
     document.getElementById('arow').classList = "";
     document.getElementById('brow').classList = "";

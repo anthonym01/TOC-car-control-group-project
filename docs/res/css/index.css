@@ -165,6 +165,10 @@ body {
     background-color: var(--accent-color);
 }
 
+.accept{
+    background-color: rgb(0, 255, 0);
+}
+
 .fault {
     background-color: red;
 }
@@ -369,7 +373,7 @@ body {
     background-image: var(--hook_arrow);
     transition: background-image 200ms;
     overflow: visible;
-    background-repeat: no-repeat;
+    background-repeat: no-repeat;cursor: pointer;
 }
 
 .arrowcontainer_active .hook_arrow_left,
@@ -466,6 +470,9 @@ body {
     top: unset;
 }
 
+.holdcolor{
+    color: var(--text-color)!important;
+}
 /* arrow positions */
 #ignition-on-hold_arrow_container {
     top: 25rem;

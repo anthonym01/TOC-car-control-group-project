@@ -81,7 +81,7 @@
             <div class="straight_arrow_left" id="enginestarted-off_arrow"></div>
         </div><!-- ignition-on -> hold arrow" -->
         <div class="arrowcontainer" id="ignition-on-hold_arrow_container" title="brake-held">
-            <div class="arrow_label"> b</div>
+            <div class="arrow_label">b</div>
             <div class="straight_arrow_right" id="ignition-on-hold_arrow"></div>
         </div> <!-- hold -> engine started arrow" -->
         <div class="arrowcontainer" id="hold-enginestarted_arrow_container" title="start signal">
@@ -151,7 +151,7 @@
         </div>
         <div class="arrowcontainer" id="forward-forward_arrow_container"
             title="f:accelerate signal | h:brake-pressed signal">
-            <div class="arrow_label">f h</div>
+            <div class="arrow_label holdcolor">f h</div>
             <div class="loop_arrow" id="forward-forward_arrow"></div>
         </div>
         <div class="arrowcontainer" id="cruise-cruise_arrow_container" title="accelerate signal">
@@ -159,7 +159,7 @@
             <div class="loop_arrow" id="cruise-cruise_arrow"></div>
         </div>
         <div class="arrowcontainer" id="reverse-reverse_arrow_container" title="brake-pressed signal">
-            <div class="arrow_label">f h</div>
+            <div class="arrow_label holdcolor">f h</div>
             <div class="loop_arrow" id="reverse-reverse_arrow"></div>
         </div>
     </div>
@@ -203,10 +203,9 @@
             <td class="centered">i</td>
             <td>set-cruise-control</td>
         </tr>
-        <!--<tr id="jrow">
-            <td class="centered">j</td>
-            <td>decelerate</td>
-        </tr>-->
+        <tr>
+            <td colspan="2" class="centered"><a href="/res/TOC write up.pdf" target="_blank">documentation</a></td>
+        </tr>
     </table>
     <table id="actiontable">
         <tr>
@@ -228,7 +227,7 @@
                     <input type="text" id="stabput" name="stabput" placeholder="Input">
                 </div>
             </td>
-            <td><button id="test_run">test run</button></td>
+            <td><button id="test_run">Run</button></td>
         </tr>
         <tr>
             <td colspan="4" id="chipper">

@@ -155,7 +155,15 @@ function pullupinput() {//draw input and run
     console.log(inptarray)
 
     document.getElementById('offstate').classList.add('active');
-    setTimeout(() => { process_input(); }, 1000);
+    if (raw_input == "") {
+        document.getElementById('presout').innerHTML = 'Accepted';
+        document.getElementById('offstate').classList.add("accept");
+        document.getElementById('signalout').innerHTML = "empty string";
+    }
+    else {
+        setTimeout(() => { process_input(); }, 1000);
+
+    }
 }
 
 function process_input() {//process that input
@@ -232,8 +240,8 @@ function process_input() {//process that input
                             console.log('in-reverse-motion -> stationary position');
                             break;
                         /*case 7: //in-forward-motion -> stationary position if speed = 0 | speed--
-
-
+ 
+ 
                             current_state = 5;
                             speed = 0;
                             document.getElementById('stationarystate').classList.add('active');

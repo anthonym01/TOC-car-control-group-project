@@ -409,15 +409,15 @@ function process_input() {//process that input
                     console.warn(' Input/signal: ', inptarray[i], ' is not appart of the language')
                     document.getElementById('statout').innerHTML = states[current_state];
                     document.getElementById('speedout').innerHTML = speed;
-                    document.getElementById('signalout').innerHTML = inptarray[i];
+                    document.getElementById('signalout').innerHTML = `"${inptarray[i]}"`;
                     failiure(current_state, inptarray[i])
-                    document.getElementById('presout').innerHTML = 'Rejected ' + inptarray[i] + ' is not appart of the language';
+                    document.getElementById('presout').innerHTML = `Rejected, "${inptarray[i]}" is not appart of the language`;
                     return -1;
             }
 
             document.getElementById('statout').innerHTML = states[current_state];
             document.getElementById('speedout').innerHTML = speed;
-            document.getElementById('signalout').innerHTML = inptarray[i];
+            document.getElementById('signalout').innerHTML = `"${inptarray[i]}"`;
             document.getElementById('presout').innerHTML = 'working';
             stabput.focus()
             stabput.setSelectionRange(i * 2, 2 * i + 1)

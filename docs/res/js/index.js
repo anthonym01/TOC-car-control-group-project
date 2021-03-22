@@ -173,6 +173,7 @@ function process_input() {//process that input
             rest_states();
 
             console.log('current state: ', states[current_state], ' Input/signal: ', inptarray[i])
+            document.getElementById('signalout').innerHTML = `"${inptarray[i]}"`;
             switch (inptarray[i]) {
                 case "a"://start signal
                     document.getElementById('arow').classList = "flasrow"
@@ -427,7 +428,6 @@ function process_input() {//process that input
 
             document.getElementById('statout').innerHTML = states[current_state];
             document.getElementById('speedout').innerHTML = speed;
-            document.getElementById('signalout').innerHTML = `"${inptarray[i]}"`;
             document.getElementById('presout').innerHTML = 'working';
             stabput.focus()
             stabput.setSelectionRange(i * 2, 2 * i + 1)
@@ -476,6 +476,7 @@ function rest_states() {//reste the states
 
 function failiure(where, signal) {
     console.warn('Failiure cannot apply ', signal, ' to state ', states[where])
+    document.getElementById('presout').innerHTML = 'Rejected';
     timers.forEach((timer) => { clearTimeout(timer) })
     rest_states()
     //document.getElementById('presout').innerHTML = 'Rejected';
